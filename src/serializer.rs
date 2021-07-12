@@ -95,6 +95,12 @@ impl NodeRef {
             },
         )
     }
+    
+    /// Serialize with ability to specify options this node in HTML syntax to the given stream.
+    #[inline]
+    pub fn serialize_with<W: Write>(&self, writer: &mut W, options: SerializeOpts) -> Result<()> {
+        serialize(writer, self, options)
+    }
 
     /// Serialize this node and its descendants in HTML syntax to a new file at the given path.
     #[inline]
